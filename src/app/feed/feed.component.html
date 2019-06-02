@@ -1,0 +1,122 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <div class="card card-inverse card-info">
+        <img class="card-img-top" src="https://picsum.photos/200/150/?random">
+        <div class="card-block">
+          <figure class="profile">
+            <img src="https://picsum.photos/200/150/?random" class="profile-avatar" alt="">
+          </figure>
+          <h4 class="card-title mt-3">User Name</h4>
+          <div class="meta card-text">
+            <a>@username1611</a>
+          </div>
+        </div>
+        <div class="card-footer">
+          <small>Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Trends For you</h5>
+          <p class="card-text"> Daily content...</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">#Sunday Thoughts</li>
+          <li class="list-group-item">#Monday Thoughts</li>
+          <li class="list-group-item">#Tuesday Thoughts</li>
+          <li class="list-group-item">#Wednesday Thoughts</li>
+          <li class="list-group-item">#Thursday Thoughts</li>
+          <li class="list-group-item">#Friday Thoughts</li>
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <textarea class="form-control" rows="4" type="text" [(ngModel)]="tweetText"  placeholder="Post a Tweet"></textarea>
+          <div class="text-right">
+              <br>
+            <button class="btn btn-sm btn-success" (click)='onNewTweet(myText)'>Tweet</button>
+          </div>
+          <br /><br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <ul class="media-list" *ngFor="let tweet of tweets">
+            <li class="media">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object" src="{{tweet.avatar}}" alt="image" width="85px" height="85px">
+                </a>
+              </div>&nbsp;&nbsp;&nbsp;
+              <div class="media-body">
+                <h4 class="media-heading">{{tweet.uname}}</h4>
+                {{tweet.text}}
+                <p>
+                  <a class="fav" (click)="onFav(tweet)"
+                    [ngClass]="{ faved: isUserInCollection(tweet.fav, userService.getCurrentUser()) }">
+                    <span><i class="fa fa-heart" aria-hidden="true"></i></span>&nbsp; {{tweet.fav.length}}
+                    Favourites &nbsp;&nbsp;&nbsp;&nbsp;
+                  </a>
+                  <a class="rt" (click)="onRt(tweet)"
+                    [ngClass]="{ rted: isUserInCollection(tweet.rt, userService.getCurrentUser()) }">
+                    <span><i class="fa fa-comment-o" aria-hidden="true"></i></span> &nbsp;{{tweet.rt.length}}
+                    Comments
+                  </a>
+                </p>
+              </div>
+            </li>
+            <hr />
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <div class="card">
+        <div class="card-header">
+          Who To Follow
+        </div>
+        <div class="scroll">
+          <ul *ngFor="let tweet of tweets" style="list-style-type: none">
+            <li>
+              <a href="#">
+                <img class="media-object" src="{{tweet.avatar}}" alt="image" width="50px" height="50px"
+                  style="border-radius: 25px;">
+                &nbsp;&nbsp;<b>{{tweet.uname}}</b>
+              </a>
+              <br>
+              <button class="btn-primary" style="border-radius: 15px">Follow</button>
+            </li>
+            <hr />
+          </ul>
+        </div>
+
+        <div class="card-footer">
+          <small>Connect other address books</small>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-header">
+          &copy; 2019 <br>
+          <a href="#">&nbsp; About</a><br>
+          <a href="#">&nbsp; Terms & Conditions</a><br>
+          <a href="#">&nbsp; Help Center</a><br>
+          <a href="#">&nbsp; Privacy Policy</a><br>
+          <a href="#">&nbsp; Blog</a><br>
+          <a href="#">&nbsp; Jobs</a><br>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

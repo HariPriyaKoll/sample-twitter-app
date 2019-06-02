@@ -1,0 +1,17 @@
+<!-- <p>
+  messages works!
+</p> -->
+<div class="container-fluid">
+ <div class="row">
+ <div class="col-lg-12 col-md-12 col-sm-12">
+       
+    <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+    <button (click)="sendMessage()">Send</button>
+
+    <div *ngFor="let message of messages">
+        {{message}}
+    </div>
+ </div>
+ </div>
+</div>
+
